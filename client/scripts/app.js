@@ -1,15 +1,27 @@
-define(['marionette'], function(Marionette) {
-  'use strict';
+//define(['marionette'], function(Marionette) {
+//  'use strict';
+//
+//  var App = new Marionette.Application();
+//
+//  App.addRegions({
+//
+//  });
+//
+//  App.on('initialize:after', function() {
+//    console.log('Application has started');
+//  });
+//
+//  return App;
+//});
 
-  var App = new Marionette.Application();
 
-  App.addRegions({
+define(function() {
+    'use strict';
 
-  });
-
-  App.on('initialize:after', function() {
-    console.log('Application has started');
-  });
-
-  return App;
+    function App() {
+        this.start = function() {
+            console.log('Application has started');
+        }
+    }
+    return new App();
 });

@@ -5,6 +5,8 @@ var express = require('express');
 var colors = require('colors');
 var http = require('http');
 var path = require('path');
+var noteDb = require('./notedb.js');
+
 
 // Create server
 var app = express();
@@ -21,6 +23,13 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.get('/', function(req, res) {
   res.sendfile(path.join(__dirname, '../client/index.html'));
 });
+
+app.get('/notes', noteDb.findAll);
+app.get('/notes/:id', noteDb.findById);
+app.post('/notes', noteDb.addNote);
+app.put('/notes/:id', noteDb.updateNote);
+app.delete('/notes/:id', noteDb.deleteNote);
+
 
 // Start server
 http.createServer(app).listen(app.get('port'), function() {
